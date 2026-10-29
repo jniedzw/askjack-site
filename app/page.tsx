@@ -1,69 +1,88 @@
 import Image from "next/image";
 
+const features = [
+  {
+    title: "Missed-call text-back",
+    body: "Can't answer? Your customer gets a text from your business within seconds, and you get told who rang.",
+    status: "Live",
+  },
+  {
+    title: "Your admin, by text or WhatsApp",
+    body: "Log jobs, book customers in and see who owes you, just by sending a message.",
+    status: "Coming soon",
+  },
+  {
+    title: "Quotes, invoices and chasers",
+    body: "Quotes from a photo and a voice note, invoices from the quote, and polite reminders when payments are late.",
+    status: "Coming soon",
+  },
+];
+
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
+    <div className="flex flex-1 flex-col">
+      <header className="mx-auto flex w-full max-w-5xl items-center gap-3 px-6 py-6">
+        <Image src="/icon.svg" alt="" width={40} height={40} priority />
+        <span className="text-xl font-extrabold tracking-tight">Ask Jack</span>
+      </header>
+
+      <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-6">
+        <section className="py-16 sm:py-24">
+          <span className="inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-brand">
+            Coming soon to UK tradespeople
+          </span>
+          <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-6xl">
+            Never lose a job to a missed call.
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
+            Ask Jack is AI admin for plumbers, electricians and builders. When
+            you&apos;re up a ladder or under a sink, Jack texts your customer
+            back, tells you who rang, and takes care of the paperwork so your
+            evenings are your own.
           </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href="mailto:hello@askjack.uk?subject=Early%20access%20to%20Ask%20Jack"
+              className="inline-flex h-12 items-center justify-center rounded-full bg-brand px-6 font-semibold text-white transition-colors hover:bg-brand-light"
+            >
+              Get early access
+            </a>
+            <span className="text-muted">
+              or email{" "}
+              <a href="mailto:hello@askjack.uk" className="font-medium text-ink underline">
+                hello@askjack.uk
+              </a>
+            </span>
+          </div>
+        </section>
+
+        <section className="grid gap-6 pb-20 sm:grid-cols-3">
+          {features.map((feature) => (
+            <div key={feature.title} className="rounded-2xl border border-slate-200 p-6">
+              <span
+                className={
+                  feature.status === "Live"
+                    ? "rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800"
+                    : "rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600"
+                }
+              >
+                {feature.status}
+              </span>
+              <h2 className="mt-4 text-lg font-bold">{feature.title}</h2>
+              <p className="mt-2 leading-7 text-muted">{feature.body}</p>
+            </div>
+          ))}
+        </section>
       </main>
+
+      <footer className="border-t border-slate-200">
+        <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-6 py-6 text-sm text-muted sm:flex-row sm:justify-between">
+          <span>&copy; 2026 Ask Jack · Liverpool, UK</span>
+          <a href="mailto:hello@askjack.uk" className="hover:text-ink">
+            hello@askjack.uk
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }
