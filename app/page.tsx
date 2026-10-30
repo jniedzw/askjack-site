@@ -30,6 +30,13 @@ const included = [
   "A family and friends list that never gets the text",
 ];
 
+const coming = [
+  "Everything in Starter",
+  "Your admin by text or WhatsApp",
+  "Quotes from a photo and a voice note",
+  "Invoices and polite payment reminders",
+];
+
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
@@ -113,26 +120,45 @@ export default function Home() {
           <h2 className="text-3xl font-extrabold tracking-tight">
             Simple pricing
           </h2>
-          <div className="mt-8 max-w-md rounded-2xl border border-slate-200 p-6">
-            <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-brand">
-              Founding price
-            </span>
-            <p className="mt-4 text-4xl font-extrabold tracking-tight">
-              &pound;30
-              <span className="text-lg font-medium text-muted"> a month</span>
-            </p>
-            <p className="mt-2 text-muted">First month free. Stop any time.</p>
-            <ul className="mt-6 space-y-2 leading-7">
-              {included.map((item) => (
-                <li key={item}>&#10003; {item}</li>
-              ))}
-            </ul>
-            <a
-              href="mailto:hello@askjack.uk?subject=Early%20access%20to%20Ask%20Jack"
-              className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-brand px-6 font-semibold text-white transition-colors hover:bg-brand-light"
-            >
-              Get early access
-            </a>
+          <div className="mt-8 grid gap-6 sm:grid-cols-2">
+            <div className="rounded-2xl border border-slate-200 p-6">
+              <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800">
+                Live
+              </span>
+              <h3 className="mt-4 text-lg font-bold">Starter</h3>
+              <p className="mt-2 text-4xl font-extrabold tracking-tight">
+                &pound;49
+                <span className="text-lg font-medium text-muted"> a month</span>
+              </p>
+              <p className="mt-2 text-muted">First month free. Stop any time.</p>
+              <ul className="mt-6 space-y-2 leading-7">
+                {included.map((item) => (
+                  <li key={item}>&#10003; {item}</li>
+                ))}
+              </ul>
+              <a
+                href="mailto:hello@askjack.uk?subject=Early%20access%20to%20Ask%20Jack"
+                className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-brand px-6 font-semibold text-white transition-colors hover:bg-brand-light"
+              >
+                Get early access
+              </a>
+            </div>
+            <div className="rounded-2xl border border-slate-200 p-6">
+              <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">
+                Coming soon
+              </span>
+              <h3 className="mt-4 text-lg font-bold">Pro</h3>
+              <p className="mt-2 text-4xl font-extrabold tracking-tight">
+                &pound;99
+                <span className="text-lg font-medium text-muted"> a month</span>
+              </p>
+              <p className="mt-2 text-muted">Not available yet.</p>
+              <ul className="mt-6 space-y-2 leading-7">
+                {coming.map((item) => (
+                  <li key={item}>&#10003; {item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </section>
       </main>
