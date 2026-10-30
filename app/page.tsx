@@ -19,6 +19,17 @@ const features = [
   },
 ];
 
+// Real customers only, with their permission. This section stays hidden while empty.
+const testimonials: { quote: string; name: string; trade: string }[] = [];
+
+const included = [
+  "Your own business phone number",
+  "A text back to customers you miss",
+  "A text to you for every missed call",
+  "Customers' replies sent to your mobile",
+  "A family and friends list that never gets the text",
+];
+
 export default function Home() {
   return (
     <div className="flex flex-1 flex-col">
@@ -73,6 +84,56 @@ export default function Home() {
               <p className="mt-2 leading-7 text-muted">{feature.body}</p>
             </div>
           ))}
+        </section>
+
+        {testimonials.length > 0 && (
+          <section className="pb-20">
+            <h2 className="text-3xl font-extrabold tracking-tight">
+              What trades say
+            </h2>
+            <div className="mt-8 grid gap-6 sm:grid-cols-2">
+              {testimonials.map((testimonial) => (
+                <figure
+                  key={testimonial.name}
+                  className="rounded-2xl border border-slate-200 p-6"
+                >
+                  <blockquote className="leading-7">
+                    &ldquo;{testimonial.quote}&rdquo;
+                  </blockquote>
+                  <figcaption className="mt-4 text-sm text-muted">
+                    {testimonial.name}, {testimonial.trade}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        )}
+
+        <section className="pb-20">
+          <h2 className="text-3xl font-extrabold tracking-tight">
+            Simple pricing
+          </h2>
+          <div className="mt-8 max-w-md rounded-2xl border border-slate-200 p-6">
+            <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-brand">
+              Founding price
+            </span>
+            <p className="mt-4 text-4xl font-extrabold tracking-tight">
+              &pound;30
+              <span className="text-lg font-medium text-muted"> a month</span>
+            </p>
+            <p className="mt-2 text-muted">First month free. Stop any time.</p>
+            <ul className="mt-6 space-y-2 leading-7">
+              {included.map((item) => (
+                <li key={item}>&#10003; {item}</li>
+              ))}
+            </ul>
+            <a
+              href="mailto:hello@askjack.uk?subject=Early%20access%20to%20Ask%20Jack"
+              className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-brand px-6 font-semibold text-white transition-colors hover:bg-brand-light"
+            >
+              Get early access
+            </a>
+          </div>
         </section>
       </main>
 
