@@ -35,7 +35,7 @@ const sections = [
     body: [
       "The tradesperson you contacted.",
       "Twilio, who carry our calls and text messages. Twilio may process data outside the UK, using legal safeguards.",
-      "Render, who host our service on servers in the EU.",
+      "Render, who host our service on servers in the EU. Render's own suppliers may process data outside the UK, using legal safeguards.",
     ],
   },
   {
