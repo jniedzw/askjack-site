@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const features = [
   {
@@ -78,9 +79,14 @@ export default function Home() {
       <footer className="border-t border-slate-200">
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-6 py-6 text-sm text-muted sm:flex-row sm:justify-between">
           <span>&copy; 2026 Ask Jack · Liverpool, UK</span>
-          <a href="mailto:hello@askjack.uk" className="hover:text-ink">
-            hello@askjack.uk
-          </a>
+          <span className="flex gap-4">
+            <Link href="/privacy" className="hover:text-ink">
+              Privacy
+            </Link>
+            <a href="mailto:hello@askjack.uk" className="hover:text-ink">
+              hello@askjack.uk
+            </a>
+          </span>
         </div>
       </footer>
     </div>
