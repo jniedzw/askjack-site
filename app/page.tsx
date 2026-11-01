@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 import Calculator from "./ui/calculator";
+import Phone from "./ui/phone";
 
 const features = [
   {
@@ -63,9 +64,47 @@ const questions = [
       "It depends on your network and tariff, so it's worth checking. We'll help you set it up.",
   },
   {
+    question: "Is it a real person texting my customers?",
+    answer:
+      "No, it's an automatic text in your business name, using wording you agree with us. When a customer replies, it comes straight to you.",
+  },
+  {
+    question: "Will it work with my phone?",
+    answer:
+      "It should work with most UK mobiles. We'll set up the divert with you and make a test call together. iPhones need one setting changed, and we'll do that too.",
+  },
+  {
+    question: "What if I go on holiday?",
+    answer:
+      "Tell us and we'll pause the service or change the wording while you're away.",
+  },
+  {
+    question: "What if something goes wrong?",
+    answer:
+      "If an alert can't reach you on WhatsApp, it's sent by text instead. It's still worth keeping your own notes while you try it.",
+  },
+  {
     question: "What if a customer doesn't want the texts?",
     answer:
       "They can reply STOP at any time. We only text people about their own enquiry, and never send marketing.",
+  },
+];
+
+const planned = [
+  {
+    title: "Your admin, by message",
+    you: "Booked Mrs Jones, boiler service, Tuesday 9am, £90",
+    jack: "Done. It's in your diary, and I'll remind her on Monday.",
+  },
+  {
+    title: "Quotes",
+    you: "Sends a photo of the job and a voice note",
+    jack: "Here's your quote for £420. Want to check it before it goes?",
+  },
+  {
+    title: "Invoices and chasers",
+    you: "Who owes me?",
+    jack: "Two invoices are unpaid, £640 in total. Shall I send a polite reminder?",
   },
 ];
 
@@ -96,7 +135,8 @@ export default function Home() {
       </header>
 
       <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-6">
-        <section className="py-16 sm:py-24">
+        <section className="grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2">
+          <div>
           <span className="inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-brand">
             Coming soon to UK tradespeople
           </span>
@@ -123,6 +163,8 @@ export default function Home() {
               </a>
             </span>
           </div>
+          </div>
+          <Phone />
         </section>
 
         <section className="pb-20">
@@ -158,6 +200,37 @@ export default function Home() {
               <p className="mt-2 leading-7 text-muted">{feature.body}</p>
             </div>
           ))}
+        </section>
+
+        <section className="pb-20">
+          <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">
+            Coming soon
+          </span>
+          <h2 className="mt-4 text-3xl font-extrabold tracking-tight">
+            What Jack will do next
+          </h2>
+          <p className="mt-3 max-w-2xl leading-7 text-muted">
+            These aren&apos;t live yet. Here&apos;s how we plan them to work,
+            and you&apos;d check everything before it reaches a customer.
+          </p>
+          <div className="mt-8 grid gap-6 sm:grid-cols-3">
+            {planned.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border border-slate-200 p-6"
+              >
+                <h3 className="text-lg font-bold">{item.title}</h3>
+                <p className="mt-4 text-sm font-semibold text-muted">You</p>
+                <p className="mt-1 ml-4 rounded-2xl rounded-br-sm bg-orange-50 px-4 py-2.5 text-sm leading-6">
+                  {item.you}
+                </p>
+                <p className="mt-4 text-sm font-semibold text-muted">Jack</p>
+                <p className="mt-1 mr-4 rounded-2xl rounded-bl-sm bg-slate-100 px-4 py-2.5 text-sm leading-6">
+                  {item.jack}
+                </p>
+              </div>
+            ))}
+          </div>
         </section>
 
         <section className="pb-20">
