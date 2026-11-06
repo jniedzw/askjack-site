@@ -41,7 +41,7 @@ const sections = [
       "Twilio, who carry our calls and text messages. Twilio may process data outside the UK, using legal safeguards.",
       "Render, who host our service on servers in the EU. Render's own suppliers may process data outside the UK, using legal safeguards.",
       "Meta, who run WhatsApp, which tradespeople use to message Jack. Meta may process data outside the UK, using legal safeguards.",
-      "Anthropic, who provide our AI. When a tradesperson messages Jack about a job, that message is sent to Anthropic to be read. Anthropic doesn't use it to train AI models, and deletes it within 30 days, except where needed to stop misuse of its service or by law. Anthropic processes data in the US, under standard contractual clauses with the UK's approved addendum.",
+      "Anthropic, who provide our AI. When a tradesperson messages Jack about a job, that message is sent to Anthropic to be read. Anthropic doesn't use it to train AI models, and deletes it within 30 days, except where needed to stop misuse of its service or by law. Anthropic processes data outside the UK, mainly in the US, under standard contractual clauses with the UK's approved addendum.",
     ],
   },
   {
