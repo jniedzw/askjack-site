@@ -5,6 +5,8 @@ import { useState } from "react";
 // A cautious guess: about 1 in 5 missed calls would have turned into a job.
 const JOBS_PER_CALL = 0.2;
 const WEEKS_PER_YEAR = 52;
+// The Pro plan's monthly price, for "pays for itself".
+const PRO_PRICE = 99;
 
 function toNumber(value: string) {
   const number = Number(value);
@@ -17,6 +19,9 @@ export default function Calculator() {
 
   const jobs = toNumber(calls) * WEEKS_PER_YEAR * JOBS_PER_CALL;
   const yearly = Math.round(jobs * toNumber(jobValue));
+  // How many saved jobs a month cover the Pro plan, rounded up.
+  const value = toNumber(jobValue);
+  const jobsToCover = value > 0 ? Math.ceil(PRO_PRICE / value) : 0;
 
   return (
     <div className="mt-8 grid gap-6 rounded-2xl border border-slate-200 p-6 sm:grid-cols-2">
@@ -53,6 +58,13 @@ export default function Calculator() {
           An estimate, not a promise. It assumes 1 in 5 missed calls would have
           become a job. Your results will vary.
         </p>
+        {jobsToCover > 0 && (
+          <p className="mt-4 border-t border-orange-200 pt-4 font-semibold">
+            {jobsToCover === 1
+              ? `Save just one £${value.toLocaleString("en-GB")} job a month, and Pro (£${PRO_PRICE}) pays for itself.`
+              : `Save ${jobsToCover} jobs like that a month, and Pro (£${PRO_PRICE}) pays for itself.`}
+          </p>
+        )}
       </div>
     </div>
   );
