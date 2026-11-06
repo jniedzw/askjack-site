@@ -18,7 +18,9 @@ const sections = [
     heading: "What we collect",
     body: [
       "If you call or text a tradesperson who uses Ask Jack: your phone number, the time of your call, whether we texted you back, and any text messages you send.",
-      "If you are a tradesperson using Ask Jack: your name, business name, mobile number and the wording of your messages.",
+      "If a tradesperson uses Ask Jack for your job: your name, address and phone number, details of the work, and the quotes, invoices, bookings and payments for it.",
+      "If you are a tradesperson using Ask Jack: your name, business name, business address, mobile number, bank details for your invoices, your prices, and the messages you send to Jack.",
+      "If you log in to your Ask Jack page: one cookie that keeps you logged in. We don't use advertising or tracking cookies.",
       "If you email us: your email address and what you send us.",
     ],
   },
@@ -26,7 +28,9 @@ const sections = [
     heading: "Why we use it",
     body: [
       "To text you back about your enquiry, tell the tradesperson you called, and pass on your replies. Our lawful basis is legitimate interests: making sure enquiries aren't missed.",
+      "To help the tradesperson run their business: logging and booking their jobs, writing their quotes and invoices, and keeping track of payments. We do this on the tradesperson's behalf.",
       "To provide our service to tradespeople, under our contract with them, and to reply to emails.",
+      "We use AI to turn a tradesperson's messages into draft quotes, jobs and bookings. The tradesperson checks every quote before it's sent, and the AI never sets a price: prices come from the tradesperson.",
       "We only text you about your own enquiry or job. We don't send marketing texts, and we never sell your information.",
     ],
   },
@@ -36,12 +40,15 @@ const sections = [
       "The tradesperson you contacted.",
       "Twilio, who carry our calls and text messages. Twilio may process data outside the UK, using legal safeguards.",
       "Render, who host our service on servers in the EU. Render's own suppliers may process data outside the UK, using legal safeguards.",
+      "Meta, who run WhatsApp, which tradespeople use to message Jack. Meta may process data outside the UK, using legal safeguards.",
+      "Anthropic, who provide our AI. When a tradesperson messages Jack about a job, that message is sent to Anthropic to be read. Anthropic doesn't use it to train AI models, and deletes it within 30 days, except where needed to stop misuse of its service or by law. Anthropic processes data in the US, under standard contractual clauses with the UK's approved addendum.",
     ],
   },
   {
     heading: "How long we keep it",
     body: [
       "We keep call and message records for up to 12 months, then delete them. Deleted records may remain in our providers' backups for up to 30 more days. If you reply STOP, we keep your number on a do-not-text list so that we can respect your choice.",
+      "We keep job, quote, invoice, booking and payment records while the tradesperson uses Ask Jack, because they're the tradesperson's business records. When a tradesperson leaves, we give them a copy and delete the records within 30 days.",
     ],
   },
   {
@@ -61,7 +68,7 @@ export default function Privacy() {
         ← Back to Ask Jack
       </Link>
       <h1 className="mt-6 text-3xl font-extrabold tracking-tight">Privacy policy</h1>
-      <p className="mt-2 text-sm text-muted">Last updated: 30 October 2026</p>
+      <p className="mt-2 text-sm text-muted">Last updated: 6 November 2026</p>
       {sections.map((section) => (
         <section key={section.heading} className="mt-8">
           <h2 className="text-lg font-bold">{section.heading}</h2>
