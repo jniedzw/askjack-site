@@ -11,14 +11,14 @@ const features = [
     status: "Live",
   },
   {
-    title: "Your admin, by text or WhatsApp",
-    body: "Log jobs, book customers in and see who owes you, just by sending a message.",
-    status: "Coming soon",
+    title: "Your admin, on WhatsApp",
+    body: "Log jobs, book them in, and see what's on this week and who owes you, just by sending a message.",
+    status: "Early access",
   },
   {
-    title: "Quotes, invoices and chasers",
-    body: "Quotes from a photo and a voice note, invoices from the quote, and polite reminders when payments are late.",
-    status: "Coming soon",
+    title: "Quotes and invoices",
+    body: "Quotes and invoices from a quick message, priced from your own rates. You check every one before it goes.",
+    status: "Early access",
   },
 ];
 
@@ -46,7 +46,17 @@ const questions = [
   {
     question: "Do I need to download an app?",
     answer:
-      "No. Everything happens by text, and alerts can come to you on WhatsApp if you prefer.",
+      "No. Missed-call texts happen on their own, and Jack works through WhatsApp, which you already have. There's also a private web page with your jobs, customers and money.",
+  },
+  {
+    question: "Does Jack set my prices?",
+    answer:
+      "No. Jack uses the prices you send him, or the prices and rates you've saved. If a price isn't clear, he asks instead of guessing, and you check every quote before it goes out.",
+  },
+  {
+    question: "Can I get my data out?",
+    answer:
+      "Yes, any time. Send EXPORT and Jack sends you everything as a spreadsheet: jobs, quotes, invoices and payments, ready for your accountant.",
   },
   {
     question: "Will it text my family and friends?",
@@ -90,21 +100,22 @@ const questions = [
   },
 ];
 
-const planned = [
+// Made-up examples, written the way Jack really replies.
+const examples = [
   {
-    title: "Your admin, by message",
-    you: "Booked Mrs Jones, boiler service, Tuesday 9am, £90",
-    jack: "Done. It's in your diary, and I'll remind her on Monday.",
+    title: "Booking a job",
+    you: "Book Mrs Jones, boiler service, Tuesday 9am",
+    jack: "Booked: Mrs Jones, boiler service, Tue 10 Nov, 9am.",
   },
   {
     title: "Quotes",
-    you: "Sends a photo of the job and a voice note",
-    jack: "Here's your quote for £420. Want to check it before it goes?",
+    you: "Quote Mrs Patel bathroom, 3 days, 650 materials",
+    jack: "Draft quote saved: bathroom for Mrs Patel, £1,497.50. Here's the PDF to check.",
   },
   {
-    title: "Invoices and chasers",
+    title: "Who owes you",
     you: "Who owes me?",
-    jack: "Two invoices are unpaid, £640 in total. Shall I send a polite reminder?",
+    jack: "Invoice 2: Mrs Jones, £1,250.50, 6 days overdue. Invoice 3: Mr Smith, £85.00. Total: £1,335.50.",
   },
 ];
 
@@ -119,11 +130,12 @@ const included = [
   "A family and friends list that never gets the text",
 ];
 
-const coming = [
+const pro = [
   "Everything in Starter",
-  "Your admin by text or WhatsApp",
-  "Quotes from a photo and a voice note",
-  "Invoices and polite payment reminders",
+  "Jobs, bookings and your week ahead on WhatsApp",
+  "Quotes and invoices as PDFs, priced from your rates",
+  "Who owes you, at a glance",
+  "Your own page with jobs, customers and money",
 ];
 
 export default function Home() {
@@ -138,7 +150,7 @@ export default function Home() {
         <section className="grid items-center gap-12 py-16 sm:py-24 lg:grid-cols-2">
           <div>
           <span className="inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-brand">
-            Coming soon to UK tradespeople
+            Early access for UK tradespeople
           </span>
           <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-6xl">
             Never lose a job to a missed call.
@@ -191,7 +203,7 @@ export default function Home() {
                 className={
                   feature.status === "Live"
                     ? "rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800"
-                    : "rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600"
+                    : "rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-brand"
                 }
               >
                 {feature.status}
@@ -203,18 +215,19 @@ export default function Home() {
         </section>
 
         <section className="pb-20">
-          <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">
-            Coming soon
+          <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-brand">
+            Early access
           </span>
           <h2 className="mt-4 text-3xl font-extrabold tracking-tight">
-            What Jack will do next
+            Just message Jack
           </h2>
           <p className="mt-3 max-w-2xl leading-7 text-muted">
-            These aren&apos;t live yet. Here&apos;s how we plan them to work,
-            and you&apos;d check everything before it reaches a customer.
+            Say what you need on WhatsApp, the way you&apos;d say it to a mate.
+            Jack works from your own prices, and you check everything before
+            it reaches a customer.
           </p>
           <div className="mt-8 grid gap-6 sm:grid-cols-3">
-            {planned.map((item) => (
+            {examples.map((item) => (
               <div
                 key={item.title}
                 className="rounded-2xl border border-slate-200 p-6"
@@ -291,20 +304,26 @@ export default function Home() {
               </a>
             </div>
             <div className="rounded-2xl border border-slate-200 p-6">
-              <span className="rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-slate-600">
-                Coming soon
+              <span className="rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-brand">
+                Early access
               </span>
               <h3 className="mt-4 text-lg font-bold">Pro</h3>
               <p className="mt-2 text-4xl font-extrabold tracking-tight">
                 &pound;99
                 <span className="text-lg font-medium text-muted"> a month</span>
               </p>
-              <p className="mt-2 text-muted">Not available yet.</p>
+              <p className="mt-2 text-muted">First month free. Stop any time.</p>
               <ul className="mt-6 space-y-2 leading-7">
-                {coming.map((item) => (
+                {pro.map((item) => (
                   <li key={item}>&#10003; {item}</li>
                 ))}
               </ul>
+              <a
+                href="mailto:hello@askjack.uk?subject=Early%20access%20to%20Ask%20Jack%20Pro"
+                className="mt-6 inline-flex h-12 w-full items-center justify-center rounded-full bg-brand px-6 font-semibold text-white transition-colors hover:bg-brand-light"
+              >
+                Get early access
+              </a>
             </div>
           </div>
         </section>
