@@ -18,7 +18,7 @@ const sections = [
     heading: "What we collect",
     body: [
       "If you call or text a tradesperson who uses Ask Jack: your phone number, the time of your call, whether we texted you back, and any text messages you send.",
-      "If a tradesperson uses Ask Jack for your job: your name, address and phone number, details of the work, and the quotes, invoices, bookings and payments for it.",
+      "If a tradesperson uses Ask Jack for your job: your name, address and phone number, details of the work, the quotes, invoices, bookings and payments for it, and any notes the tradesperson keeps to help with the job, such as how to get in or where to park.",
       "If you are a tradesperson using Ask Jack: your name, business name, business address, mobile number, bank details for your invoices, your prices, and the messages you send to Jack.",
       "If you log in to your Ask Jack page: one cookie that keeps you logged in. We don't use advertising or tracking cookies.",
       "If you email us: your email address and what you send us.",
@@ -51,7 +51,7 @@ const sections = [
     heading: "How long we keep it",
     body: [
       "We keep call and message records for up to 12 months, then delete them. Deleted records may remain in our providers' backups for up to 30 more days. If you reply STOP, we keep your number on a do-not-text list so that we can respect your choice.",
-      "We keep job, quote, invoice, booking and payment records while the tradesperson uses Ask Jack, because they're the tradesperson's business records. When a tradesperson leaves, we give them a copy and delete the records within 30 days.",
+      "We keep job, quote, invoice, booking and payment records, and the tradesperson's notes, while the tradesperson uses Ask Jack, because they're the tradesperson's business records. When a tradesperson leaves, we give them a copy and delete the records within 30 days.",
     ],
   },
   {
@@ -71,7 +71,7 @@ export default function Privacy() {
         ← Back to Ask Jack
       </Link>
       <h1 className="mt-6 text-3xl font-extrabold tracking-tight">Privacy policy</h1>
-      <p className="mt-2 text-sm text-muted">Last updated: 24 November 2026</p>
+      <p className="mt-2 text-sm text-muted">Last updated: 25 November 2026</p>
       {sections.map((section) => (
         <section key={section.heading} className="mt-8">
           <h2 className="text-lg font-bold">{section.heading}</h2>
