@@ -30,8 +30,10 @@ const sections = [
       "To text you back about your enquiry, tell the tradesperson you called, and pass on your replies. Our lawful basis is legitimate interests: making sure enquiries aren't missed.",
       "To help the tradesperson run their business: logging and booking their jobs, writing their quotes and invoices, and keeping track of payments. We do this on the tradesperson's behalf.",
       "To provide our service to tradespeople, under our contract with them, and to reply to emails.",
-      "We use AI to turn a tradesperson's messages into draft quotes, jobs and bookings. The tradesperson checks every quote before it's sent, and the AI never sets a price: prices come from the tradesperson.",
-      "We only text you about your own enquiry or job. We don't send marketing texts, and we never sell your information.",
+      "We use AI to turn a tradesperson's messages, photos and voice notes into draft quotes, jobs and bookings. The tradesperson checks every quote before it's sent, and the AI never sets a price: prices come from the tradesperson.",
+      "If a tradesperson sends you a quote through Ask Jack, we text you a link to it from their business number, and tell them if you accept it. If an invoice is overdue, they can ask us to text you a polite reminder.",
+      "If you tick the box when you accept a quote, we text you once after the job to ask for a review. We only do this if you tick the box, and you can reply STOP at any time.",
+      "Otherwise we only text you about your own enquiry or job. We don't send marketing texts, and we never sell your information.",
     ],
   },
   {
@@ -42,6 +44,7 @@ const sections = [
       "Render, who host our service on servers in the EU. Render's own suppliers may process data outside the UK, using legal safeguards.",
       "Meta, who run WhatsApp, which tradespeople use to message Jack. Meta may process data outside the UK, using legal safeguards.",
       "Anthropic, who provide our AI. When a tradesperson messages Jack about a job, that message is sent to Anthropic to be read. Anthropic doesn't use it to train AI models, and deletes it within 30 days, except where needed to stop misuse of its service or by law. Anthropic processes data outside the UK, mainly in the US, under standard contractual clauses with the UK's approved addendum.",
+      "AssemblyAI, who turn voice notes a tradesperson sends to Jack into text. The audio is processed in the EU and isn't kept afterwards, and AssemblyAI doesn't use it to train its models. AssemblyAI's account systems are in the US, covered by the UK's approved data transfer safeguards.",
     ],
   },
   {
@@ -68,7 +71,7 @@ export default function Privacy() {
         ← Back to Ask Jack
       </Link>
       <h1 className="mt-6 text-3xl font-extrabold tracking-tight">Privacy policy</h1>
-      <p className="mt-2 text-sm text-muted">Last updated: 6 November 2026</p>
+      <p className="mt-2 text-sm text-muted">Last updated: 24 November 2026</p>
       {sections.map((section) => (
         <section key={section.heading} className="mt-8">
           <h2 className="text-lg font-bold">{section.heading}</h2>
