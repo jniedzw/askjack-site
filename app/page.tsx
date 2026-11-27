@@ -222,6 +222,7 @@ export default function Home() {
             <a href="#how" className="hover:text-ink">How it works</a>
             <a href="#pricing" className="hover:text-ink">Pricing</a>
             <a href="#questions" className="hover:text-ink">Questions</a>
+            <Link href="/guide" className="hover:text-ink">Guide</Link>
           </nav>
           <Button href={signUp} className="ml-auto h-10 px-4 text-sm sm:ml-6">
             Get early access
@@ -435,6 +436,9 @@ export default function Home() {
         <div className="mx-auto flex w-full max-w-5xl flex-col gap-2 px-6 py-6 text-sm text-muted sm:flex-row sm:justify-between">
           <span>&copy; 2026 Ask Jack · Liverpool, UK</span>
           <span className="flex gap-4">
+            <Link href="/guide" className="hover:text-ink">
+              Guide
+            </Link>
             <Link href="/privacy" className="hover:text-ink">
               Privacy
             </Link>
