@@ -9,32 +9,26 @@ const features = [
   {
     title: "Your admin, on WhatsApp",
     body: "Log jobs, book them in, and see your week, just by sending a message or a voice note.",
-    status: "Early access",
   },
   {
     title: "Quotes customers accept",
     body: "Quotes from a quick message or a photo of your notes, priced from your rates. Customers accept online.",
-    status: "Early access",
   },
   {
     title: "Get paid",
     body: "Turn a quote into an invoice, see who owes you, and send late payers a polite reminder.",
-    status: "Early access",
   },
   {
     title: "Missed-call text-back",
     body: "Can't answer? Your customer gets a text from your business within seconds, and you're told who rang.",
-    status: "Live",
   },
   {
     title: "Your own page",
     body: "Today's jobs with directions, every customer with your notes, and your money, on any phone.",
-    status: "Early access",
   },
   {
     title: "More reviews",
     body: "After a job, Jack asks the customer for a Google review, but only if they said yes when they accepted.",
-    status: "Early access",
   },
 ];
 
@@ -50,6 +44,22 @@ const steps = [
   {
     title: "You get an alert",
     body: "You're told who rang and any reply they send, so you can pick it up when you're free.",
+  },
+];
+
+// What happens after someone signs up.
+const start = [
+  {
+    title: "Get in touch",
+    body: "Tap Start your free month or email us. We'll have a quick chat about your business and how you work.",
+  },
+  {
+    title: "We set it up",
+    body: "Your business number, your text wording and your prices. We set up your phone with you and make a test call.",
+  },
+  {
+    title: "Say hi to Jack",
+    body: "Message Jack on WhatsApp and you're away. Your first month is free, and you can stop any time.",
   },
 ];
 
@@ -168,7 +178,7 @@ const pro = [
   "Your own page with jobs, customers and money",
 ];
 
-const ticks = ["Works in WhatsApp", "Priced from your own rates", "Stop any time"];
+const ticks = ["Works in WhatsApp", "First month free", "No contract"];
 
 // Simple line icons for the feature boxes, in the order of the features list.
 const icons = [
@@ -180,7 +190,7 @@ const icons = [
   "M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z",
 ];
 
-const signUp = "mailto:hello@askjack.uk?subject=Early%20access%20to%20Ask%20Jack";
+const signUp = "mailto:hello@askjack.uk?subject=Starting%20Ask%20Jack";
 
 function Icon({ path }: { path: string }) {
   return (
@@ -199,15 +209,8 @@ function Tick() {
 }
 
 function Badge({ status }: { status: string }) {
-  const live = status === "Live";
   return (
-    <span
-      className={
-        live
-          ? "w-fit rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-semibold text-green-800"
-          : "w-fit rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-brand"
-      }
-    >
+    <span className="w-fit rounded-full bg-orange-100 px-2.5 py-0.5 text-xs font-semibold text-brand">
       {status}
     </span>
   );
@@ -264,7 +267,7 @@ export default function Home() {
             <Link href="/guide" className="hover:text-ink">Guide</Link>
           </nav>
           <Button href={signUp} className="ml-auto h-10 px-4 text-sm sm:ml-6">
-            Get early access
+            Start free
           </Button>
         </div>
         {/* On phones the menu above is hidden, so the same links sit in a row under the header. */}
@@ -281,7 +284,7 @@ export default function Home() {
           <div className="mx-auto grid w-full max-w-5xl items-center gap-12 px-6 py-16 sm:py-24 lg:grid-cols-2">
             <div>
               <span className="inline-block rounded-full bg-orange-100 px-3 py-1 text-sm font-semibold text-brand">
-                Early access for UK tradespeople
+                Now live for UK tradespeople
               </span>
               <h1 className="mt-6 max-w-3xl text-4xl font-extrabold tracking-tight sm:text-6xl">
                 Your admin, done on <span className="text-brand">WhatsApp.</span>
@@ -292,7 +295,7 @@ export default function Home() {
                 quotes and invoices, and chases who owes you.
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
-                <Button href={signUp}>Get early access</Button>
+                <Button href={signUp}>Start your free month</Button>
                 <span className="text-muted">
                   or email{" "}
                   <a href="mailto:hello@askjack.uk" className="font-medium text-ink underline">
@@ -337,12 +340,9 @@ export default function Home() {
                   key={feature.title}
                   className="rounded-2xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:shadow-md"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-100 text-brand">
-                      <Icon path={icons[index]} />
-                    </span>
-                    <Badge status={feature.status} />
-                  </div>
+                  <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-orange-100 text-brand">
+                    <Icon path={icons[index]} />
+                  </span>
                   <h3 className="mt-4 text-lg font-bold">{feature.title}</h3>
                   <p className="mt-2 leading-7 text-muted">{feature.body}</p>
                 </div>
@@ -354,8 +354,7 @@ export default function Home() {
         <section className="bg-slate-50">
           <div className="mx-auto grid w-full max-w-5xl items-center gap-12 px-6 py-20 lg:grid-cols-2">
             <div>
-              <Badge status="Live" />
-              <h2 className="mt-4 text-3xl font-extrabold tracking-tight">
+              <h2 className="text-3xl font-extrabold tracking-tight">
                 Plus: never lose a job to a missed call
               </h2>
               <p className="mt-3 leading-7 text-muted">
@@ -405,13 +404,33 @@ export default function Home() {
           </section>
         )}
 
+        <section id="start" className="scroll-mt-20">
+          <div className="mx-auto w-full max-w-5xl px-6 py-20">
+            <h2 className="text-3xl font-extrabold tracking-tight">Up and running in a day</h2>
+            <p className="mt-3 max-w-2xl leading-7 text-muted">
+              No forms, no app, no fiddling with settings. We do the setup with you.
+            </p>
+            <ol className="mt-10 grid gap-6 sm:grid-cols-3">
+              {start.map((step, index) => (
+                <li key={step.title} className="rounded-2xl border border-slate-200 bg-white p-6">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-brand font-bold text-white">
+                    {index + 1}
+                  </span>
+                  <h3 className="mt-4 text-lg font-bold">{step.title}</h3>
+                  <p className="mt-2 leading-7 text-muted">{step.body}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
         <section id="pricing" className="scroll-mt-20 bg-slate-50">
           <div className="mx-auto w-full max-w-5xl px-6 py-20">
             <h2 className="text-3xl font-extrabold tracking-tight">Simple pricing</h2>
             <p className="mt-3 text-muted">No contract. Your first month is free on either plan.</p>
             <div className="mt-10 grid gap-6 sm:grid-cols-2">
               <div className="flex flex-col rounded-2xl border-2 border-brand bg-white p-8 shadow-xl shadow-orange-600/10">
-                <Badge status="Early access" />
+                <Badge status="Recommended" />
                 <h3 className="mt-4 text-lg font-bold">Pro</h3>
                 <p className="mt-2 text-4xl font-extrabold tracking-tight">
                   &pound;99<span className="text-lg font-medium text-muted"> a month</span>
@@ -422,12 +441,14 @@ export default function Home() {
                     <li key={item} className="flex gap-2"><Tick /> {item}</li>
                   ))}
                 </ul>
-                <Button href="mailto:hello@askjack.uk?subject=Early%20access%20to%20Ask%20Jack%20Pro" className="mt-8">
-                  Get early access
+                <Button href="mailto:hello@askjack.uk?subject=Starting%20Ask%20Jack%20Pro" className="mt-8">
+                  Start your free month
                 </Button>
               </div>
               <div className="flex flex-col rounded-2xl border border-slate-200 bg-white p-8">
-                <Badge status="Live" />
+                <span className="w-fit rounded-full bg-slate-100 px-2.5 py-0.5 text-xs font-semibold text-muted">
+                  Missed calls only
+                </span>
                 <h3 className="mt-4 text-lg font-bold">Starter</h3>
                 <p className="mt-2 text-4xl font-extrabold tracking-tight">
                   &pound;49<span className="text-lg font-medium text-muted"> a month</span>
@@ -442,7 +463,7 @@ export default function Home() {
                   href={signUp}
                   className="mt-8 inline-flex h-12 items-center justify-center rounded-full border border-slate-300 px-6 font-semibold transition hover:border-brand hover:text-brand"
                 >
-                  Get early access
+                  Start your free month
                 </a>
               </div>
             </div>
@@ -472,7 +493,7 @@ export default function Home() {
               <h2 className="text-3xl font-extrabold tracking-tight text-white">Get your evenings back.</h2>
               <p className="mt-2 text-slate-300">Try Jack free for your first month. No app, no contract.</p>
             </div>
-            <Button href={signUp}>Get early access</Button>
+            <Button href={signUp}>Start your free month</Button>
           </div>
         </section>
       </main>
