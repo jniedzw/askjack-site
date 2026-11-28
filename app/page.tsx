@@ -8,18 +8,33 @@ import WhatsAppPhone from "./ui/whatsapp-phone";
 const features = [
   {
     title: "Your admin, on WhatsApp",
-    body: "Log jobs, book them in, and see what's on this week and who owes you, just by sending a message.",
+    body: "Log jobs, book them in, and see your week, just by sending a message or a voice note.",
     status: "Early access",
   },
   {
-    title: "Quotes and invoices",
-    body: "Quotes and invoices from a quick message, priced from your own rates. You check every one before it goes.",
+    title: "Quotes customers accept",
+    body: "Quotes from a quick message or a photo of your notes, priced from your rates. Customers accept online.",
+    status: "Early access",
+  },
+  {
+    title: "Get paid",
+    body: "Turn a quote into an invoice, see who owes you, and send late payers a polite reminder.",
     status: "Early access",
   },
   {
     title: "Missed-call text-back",
-    body: "Can't answer? Your customer gets a text from your business within seconds, and you get told who rang.",
+    body: "Can't answer? Your customer gets a text from your business within seconds, and you're told who rang.",
     status: "Live",
+  },
+  {
+    title: "Your own page",
+    body: "Today's jobs with directions, every customer with your notes, and your money, on any phone.",
+    status: "Early access",
+  },
+  {
+    title: "More reviews",
+    body: "After a job, Jack asks the customer for a Google review, but only if they said yes when they accepted.",
+    status: "Early access",
   },
 ];
 
@@ -43,6 +58,16 @@ const questions = [
     question: "Does Jack set my prices?",
     answer:
       "No. Jack uses the prices you send him, or the prices and rates you've saved. If a price isn't clear, he asks instead of guessing, and you check every quote before it goes out.",
+  },
+  {
+    question: "Can I send a voice note or a photo?",
+    answer:
+      "Yes. Send a voice note and Jack turns it into text, or a photo of your notes with the price in the caption. You still check every quote before it goes.",
+  },
+  {
+    question: "What if I make a mistake?",
+    answer:
+      "Send UNDO and Jack puts back the last thing he did. You can also fix any job, booking or customer on your own page.",
   },
   {
     question: "Do I need to download an app?",
@@ -101,7 +126,7 @@ const questions = [
   },
 ];
 
-// Made-up examples, written the way Jack really replies.
+// Made-up examples, written the way Jack really replies. Check them against whatsapp.py when replies change.
 const examples = [
   {
     title: "Booking a job",
@@ -109,14 +134,16 @@ const examples = [
     jack: "Booked: Mrs Jones, boiler service, Tue 10 Nov, 9am.",
   },
   {
-    title: "Quotes",
-    you: "Quote Mrs Patel bathroom, 3 days, 650 materials",
-    jack: "Draft quote saved: bathroom for Mrs Patel, £1,497.50. Here's the PDF to check.",
+    title: "Finishing a job",
+    you: "Done J4",
+    jack: "Done: J4, Mrs Jones, boiler service. Nice one. Tap Make invoice to bill Mrs Jones for quote Q12.",
+    buttons: ["Send to customer", "Make invoice"],
   },
   {
     title: "Who owes you",
     you: "Who owes me?",
-    jack: "Invoice 2: Mrs Jones, £1,250.50, 6 days overdue. Invoice 3: Mr Smith, £85.00. Total: £1,335.50.",
+    jack: "Who owes you:\nINV-0002: Mrs Jones, £1,250.50, 6 days overdue\nINV-0003: Mr Smith, £85.00\nTotal: £1,335.50",
+    buttons: ["Send reminders"],
   },
 ];
 
@@ -134,8 +161,10 @@ const included = [
 const pro = [
   "Everything in Starter",
   "Jobs, bookings and your week ahead on WhatsApp",
-  "Quotes and invoices as PDFs, priced from your rates",
-  "Who owes you, at a glance",
+  "Quotes from a message, voice note or photo",
+  "Customers see and accept quotes online",
+  "Invoices, who owes you, and polite reminders",
+  "Review requests after the job",
   "Your own page with jobs, customers and money",
 ];
 
@@ -145,7 +174,10 @@ const ticks = ["Works in WhatsApp", "Priced from your own rates", "Stop any time
 const icons = [
   "M8.625 12a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm4.125 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0ZM2.25 12.76c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 0 1 .778-.332 48.294 48.294 0 0 0 5.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0 0 12 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018Z",
   "M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z",
+  "M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm2.5-12.25a2.25 2.25 0 0 0-4.25 1v5.75m-2-3h4.5m-4.5 3h7",
   "M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z",
+  "M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25",
+  "M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z",
 ];
 
 const signUp = "mailto:hello@askjack.uk?subject=Early%20access%20to%20Ask%20Jack";
@@ -182,7 +214,7 @@ function Badge({ status }: { status: string }) {
 }
 
 // A made-up WhatsApp chat, drawn in WhatsApp's colours so it's clear where Jack lives.
-function Chat({ title, you, jack }: { title: string; you: string; jack: string }) {
+function Chat({ title, you, jack, buttons = [] }: { title: string; you: string; jack: string; buttons?: string[] }) {
   return (
     <figure className="overflow-hidden rounded-2xl shadow-lg ring-1 ring-black/5">
       <figcaption className="flex items-center gap-3 bg-[#075e54] px-4 py-3 text-white">
@@ -194,7 +226,14 @@ function Chat({ title, you, jack }: { title: string; you: string; jack: string }
       </figcaption>
       <div className="space-y-3 bg-[#efeae2] px-4 py-5 text-sm leading-6">
         <p className="ml-10 rounded-xl rounded-tr-sm bg-[#d9fdd3] px-3 py-2 shadow-sm">{you}</p>
-        <p className="mr-10 rounded-xl rounded-tl-sm bg-white px-3 py-2 shadow-sm">{jack}</p>
+        <p className="mr-10 whitespace-pre-line rounded-xl rounded-tl-sm bg-white px-3 py-2 shadow-sm">{jack}</p>
+        {buttons.length > 0 && (
+          <div className="mr-10 grid gap-1.5 text-center text-xs font-semibold text-[#027eb5]" style={{ gridTemplateColumns: `repeat(${buttons.length}, 1fr)` }}>
+            {buttons.map((button) => (
+              <span key={button} className="rounded-lg bg-white py-2 shadow-sm">{button}</span>
+            ))}
+          </div>
+        )}
       </div>
     </figure>
   );
@@ -228,6 +267,13 @@ export default function Home() {
             Get early access
           </Button>
         </div>
+        {/* On phones the menu above is hidden, so the same links sit in a row under the header. */}
+        <nav className="flex justify-between gap-4 overflow-x-auto px-6 pb-3 text-sm font-medium text-muted sm:hidden">
+          <a href="#how" className="whitespace-nowrap hover:text-ink">How it works</a>
+          <a href="#pricing" className="whitespace-nowrap hover:text-ink">Pricing</a>
+          <a href="#questions" className="whitespace-nowrap hover:text-ink">Questions</a>
+          <Link href="/guide" className="whitespace-nowrap hover:text-ink">Guide</Link>
+        </nav>
       </header>
 
       <main className="flex flex-1 flex-col">
@@ -242,9 +288,8 @@ export default function Home() {
               </h1>
               <p className="mt-6 max-w-2xl text-lg leading-8 text-muted">
                 Jack is an AI assistant for plumbers, electricians and builders.
-                Message him like you&apos;d message a mate, and he logs your jobs,
-                books them in, writes your quotes and invoices, and tells you who
-                owes you. Your evenings are your own again.
+                Message him like a mate, and he books your jobs, writes your
+                quotes and invoices, and chases who owes you.
               </p>
               <div className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Button href={signUp}>Get early access</Button>

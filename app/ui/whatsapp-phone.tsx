@@ -23,7 +23,7 @@ export default function WhatsAppPhone() {
             <span className="truncate text-xs font-medium">Quote for Mrs Patel.pdf</span>
           </div>
           <p className="px-1 pt-2">
-            Draft quote saved: bathroom for Mrs Patel, <strong>£1,497.50</strong>. Check it, then make it final.
+            Draft quote Q12 saved: Bathroom for Mrs Patel, <strong>£1,497.50</strong>, 3 lines of work. Check it, then send FINAL Q12 for the version to send.
           </p>
         </div>
         <div className="mr-8 grid grid-cols-2 gap-1.5 text-center text-xs font-semibold text-[#027eb5]">
