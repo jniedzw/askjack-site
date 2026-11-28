@@ -50,7 +50,7 @@ const sections = [
   {
     heading: "How long we keep it",
     body: [
-      "We keep call and message records for up to 12 months, then delete them. Deleted records may remain in our providers' backups for up to 30 more days. If you reply STOP, we keep your number on a do-not-text list so that we can respect your choice.",
+      "We keep call and message records for up to 12 months, then delete them. Deleted records may remain in our providers' backups for up to 30 more days, and in our own encrypted backups for up to four weeks. If you reply STOP, we keep your number on a do-not-text list so that we can respect your choice.",
       "We keep job, quote, invoice, booking and payment records, and the tradesperson's notes, while the tradesperson uses Ask Jack, because they're the tradesperson's business records. When a tradesperson leaves, we give them a copy and delete the records within 30 days.",
     ],
   },
@@ -71,7 +71,7 @@ export default function Privacy() {
         ← Back to Ask Jack
       </Link>
       <h1 className="mt-6 text-3xl font-extrabold tracking-tight">Privacy policy</h1>
-      <p className="mt-2 text-sm text-muted">Last updated: 25 November 2026</p>
+      <p className="mt-2 text-sm text-muted">Last updated: 28 November 2026</p>
       {sections.map((section) => (
         <section key={section.heading} className="mt-8">
           <h2 className="text-lg font-bold">{section.heading}</h2>
