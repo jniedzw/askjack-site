@@ -508,6 +508,9 @@ export default function Home() {
             <Link href="/privacy" className="hover:text-ink">
               Privacy
             </Link>
+            <Link href="/terms" className="hover:text-ink">
+              Terms
+            </Link>
             <a href="mailto:hello@askjack.uk" className="hover:text-ink">
               hello@askjack.uk
             </a>
