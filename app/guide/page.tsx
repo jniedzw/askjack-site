@@ -17,7 +17,7 @@ const sections: { heading: string; intro?: string; rows: Row[]; plan?: string }[
       ["Jack texts them back", "Your caller gets a text from your business within seconds."],
       ["You get told", "An alert on WhatsApp (or by text) says who rang, and any reply they send comes to you."],
       ["Family and friends", "Numbers on your list never get the text. You still hear that they rang."],
-      ["Switch it off", "Dial ##002# and press call. Your phone goes straight back to normal."],
+      ["Switch it off", "Dial ##002# and press call. Missed calls then ring out as normal. Your network can turn your old voicemail back on."],
     ],
   },
   {
